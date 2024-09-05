@@ -74,6 +74,14 @@ class Motor:
         Command = 'M' + self.name+ 'P' + str(int(Position)) + '\n'
         return self.command(Command)
 
+    def setZero(self):
+        Command = 'Z' + self.name + '\n'
+        return self.command(Command)
+
+    def getPosition(self):
+        Command = 'P' + self.name + '\n'
+        return self.command(Command)
+
 
 
 class Hydra:
