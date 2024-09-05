@@ -1,3 +1,6 @@
+// firmware to control stepper motors with arduino uno + cnc shield V3 
+// Authors: Lukas S., Michael T.
+// Date: Sep. 2024
 
 const int stepM1 = 2;
 const int dirM1  = 5;
