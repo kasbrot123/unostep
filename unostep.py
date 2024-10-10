@@ -151,9 +151,12 @@ if __name__ == '__main__':
     shield = Hydra()
     shield.connect()
     print('start turning')
+    print('Motor Y')
     shield.Y.steps(STEP)
+    print('Motor Z')
     shield.Z.steps(STEP)
-    shield.Y.steps(-STEP)
+    print('Motor X')
+    shield.X.steps(-STEP)
     shield.disconnect()
 
 
