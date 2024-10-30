@@ -13,8 +13,8 @@ const int dirM3  = 7;
 
 const int enPin = 8;
 
-// int stepDelay = 50; // Speed (max. 7 microseconds)
-int stepDelay = 400; // Speed (max. 7 microseconds)
+int stepDelay = 50; // Speed (max. 7 microseconds)
+// int stepDelay = 400; // Speed (max. 7 microseconds)
 
 long positionM1 = 0;
 long positionM1goal = 0;
