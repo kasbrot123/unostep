@@ -7,6 +7,9 @@ Arduino programm to control stepper motors on CNC Shield V3
 
 # Arduino Firmware
 
+**TO FLASH THE MODIFIED ARDUINO PRESS THE RESET BUTTON WHEN UPLOADING THE
+SKETCH. TRY A FEW TIMES.**
+
 **VERY IMPORTANT NOTE**
 
 We modified the Arduino such that the capacitor near the `RESET ON` label is
@@ -15,10 +18,6 @@ disconnect and reconnect. The Arduino Software needs this auto reset to flash
 the firmware without any button press. To flash with the modified setup press
 the Reset button after hitting the uploading button from the Arduino Software.
 It could take a few attepts to hit at the right time.
-
-
-**TO FLASH THE MODIFIED ARDUINO PRESS THE RESET BUTTON WHEN UPLOADING THE
-SKETCH. TRY A FEW TIMES.**
 
 ## Command Set
 
