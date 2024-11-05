@@ -80,7 +80,7 @@ void moveStepper(int step_pin, int dir_pin, long steps, long step_delay) {
     it is very slow in comparison to the hard coded method. So we decided to
     use this approach.
     */
-    digitalWrite(dirMX, steps > 0 ? LOW : HIGH);
+    digitalWrite(dir_pin, steps > 0 ? LOW : HIGH);
 
     digitalWrite(enPin, LOW);
     for (long x = 0; x < abs(steps); x++) {
