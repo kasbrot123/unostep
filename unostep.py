@@ -46,7 +46,6 @@ class Motor:
 
 
     def steps(self, Steps):
-
         Command = 'S' + self.name + str(int(Steps)) + '\n'
         return self.command(Command)[0]
 
@@ -58,9 +57,14 @@ class Motor:
         Command = 'Z' + self.name + str(int(number)) + '\n'
         return self.command(Command)[0]
 
+    def setDelay(self, number):
+        Command = 'D' + self.name + str(int(number)) + '\n'
+        return self.command(Command)[0]
+
     def getPosition(self):
         Command = 'R' + self.name + '\n'
-        return self.command(Command)[1]
+        return float(self.command(Command)[1])
+
 
 
 
