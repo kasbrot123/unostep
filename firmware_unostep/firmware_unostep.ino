@@ -103,8 +103,16 @@ void returnNumber(long number) {
 void loop() {
 
     if (Serial.available()) {
-        String command = Serial.readString();
-        command.trim();
+        // readString is too slow
+        // it takes 1 s compared to 0.07 s with read()
+        //String command = Serial.readString();
+
+        String command;
+        while (Serial.available()) {
+          char single_char = Serial.read();
+          command += single_char;
+          delay(10); // this is necessary because else it is too fast
+        }
 
         // help command
         if (command.startsWith("?")) {
