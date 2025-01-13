@@ -1,6 +1,7 @@
 import time
 import serial
 from serial.tools import list_ports
+import keyboard
 
 """
 classes:
@@ -65,6 +66,45 @@ class Motor:
         Command = 'R' + self.name + '\n'
         return float(self.command(Command)[1])
 
+    def interactive(self,step=1):
+
+        HALT_TIME = 0.1
+        STEP = 160
+        WAITING = 50
+        print('Interactive mode.\nMove with arrow keys, s for step number, quit with q.')
+        print('Step size now: {}. 6400 for one full rotation'.format(STEP))
+        print('Waiting time t is {} ms'.format(WAITING))
+        print('move ',end='')
+        while True:
+            if keyboard.is_pressed('left arrow'):
+                print('move left    ')
+                self.steps(STEP)
+                time.sleep(HALT_TIME)
+            if keyboard.is_pressed('right arrow'):
+                print('move right   ')
+                self.steps(-STEP)
+                time.sleep(HALT_TIME)
+            if keyboard.is_pressed('up arrow'):
+                print('move up      ')
+                self.steps(-STEP)
+                time.sleep(HALT_TIME)
+            if keyboard.is_pressed('down arrow'):
+                print('move down    ')
+                self.steps(STEP)
+                time.sleep(HALT_TIME)
+            if keyboard.is_pressed('s'):
+                STEP = int(input('steps:'))
+                print('step is now {}, equals {:0.1f}°'.format(STEP, STEP/6400*360))
+                time.sleep(HALT_TIME)
+            if keyboard.is_pressed('w'):
+                WAITING = int(input('waiting time t in ms (t>10ms):'))
+                print('waiting time t is now: {} ms'.format(WAITING))
+                self.setDelay(WAITING)
+                time.sleep(HALT_TIME)
+
+            if keyboard.is_pressed('q'):
+                print('quit interactive mode.')
+                break
 
 
 
