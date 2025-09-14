@@ -20,6 +20,8 @@ class Motor:
         self.name = name
         self.connection = None
         self.error_list = []
+        # can be changed by hardware jumpers
+        self.steps_per_rotation = 6400
 
     def setSerial(self, Serial):
         self.connection = Serial
@@ -53,6 +55,10 @@ class Motor:
     def position(self, Position):
         Command = 'P' + self.name + str(int(Position)) + '\n'
         return self.command(Command)[0]
+
+    def rot(self, rotate):
+        steps = int(rotate * self.steps_per_rotation)
+        return self.steps(steps)
 
     def setZero(self, number=0):
         Command = 'Z' + self.name + str(int(number)) + '\n'
@@ -182,11 +188,11 @@ if __name__ == '__main__':
     shield.Z.steps(STEP)
     print('Motor X')
     shield.X.steps(-STEP)
-
+    
     motorX = shield.X
     pos = motorX.getPosition()
     print(pos)
-
+    
     shield.disconnect()
 
 
